@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+    <style>
+        body {
+            position: relative;
+        }
+
+        form {
+            border: solid;
+            border-width: 1px;
+            width: 230px;
+            height: 340px;
+            display: inline-block;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 2px 2px 2px #888888;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .btn-secondary {
+            border: solid;
+            border-width: 1px;
+            border-radius: 0px;
+        }
+
+        #play {
+            width: 120px;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <form action="">
+            <h1>Rock Paper Scissors plays: <span id="counter">0</span></h1>
+            <div class="btn-group" data-toggle="buttons">
+                <img width="200px" src="http://advisoranalyst.com/glablog/wp-content/uploads/2014/05/thumb_6917_rockpaperscissors.jpg">
+                <br>
+                <label class="btn btn-secondary active">
+                    <input type="radio" name="options" id="rock" autocomplete="off" checked> Rock
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="paper" autocomplete="off"> Paper
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="scissors" autocomplete="off"> Scissors
+                </label>
+            </div>
+            <br>
+            <br>
+            <button id="play" class="btn btn-secondary" onclick="displayWinner();">Play</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script>
+
+
+
+        function pickComputersPlay() {
+            var choices = ["rock", "paper", "scissors"];
+            var compPlay = choices[Math.floor(Math.random() * choices.length)];
+            console.log(compPlay);
+            return compPlay;
+        }
+    
+
+        function checkForWin(computer, current) {
+            if (computer === current) {
+                return "tie";
+            }
+
+            if (computer === "rock" && current === "paper"){
+                return "computer chose " + computer + ", you win";
+            }
+
+            if (computer === "rock" && current === "scissors"){
+                return "computer chose " + computer + ", you lose";
+            }
+
+            if (computer === "scissors" && current === "paper"){
+                return "computer chose " + computer + ", you lose";
+            }
+
+            if (computer === "scissors" && current === "rock"){
+                return "computer chose " + computer + ", you win";
+            }
+
+            if (computer === "paper" && current === "rock"){
+                return "computer chose " + computer + ", you lose";
+            }
+
+            if (computer === "paper" && current === "scissors"){
+                return "computer chose " + computer + ", you win";
+            }
+
+
+        }
+
+        function displayWinner() {
+            var currentPlay = document.querySelector('input[name = "options"]:checked').id;
+            alert(checkForWin(pickComputersPlay(), currentPlay));
+
+        }
+
+
+        
+
+
+
+    </script>
+</body>
+
+</html>
